@@ -5,6 +5,7 @@ const { animals } = require('./data/animals');
 // used to add express to project.
 const express = require('express');
 
+// adjusts port based on need.
 const PORT = process.env.PORT || 3001;
 
 //used to instantiate the server
@@ -71,6 +72,12 @@ function filterByQuery(query, animalsArray) {
 //     res.json(results);
 //   });
 
+// takes in the id and array of animals and returns a single animal object.
+function findById(id, animalsArray) {
+  const result = animalsArray.filter(animal => animal.id === id)[0];
+  return result;
+}
+
 app.get('/api/animals', (req, res) => {
     let results = animals;
     if (req.query) {
@@ -78,6 +85,16 @@ app.get('/api/animals', (req, res) => {
     }
     res.json(results);
   });
+
+  app.get('/api/animals/:id', (req, res) => {
+    const result = findById(req.params.id, animals);
+    if (result) {
+      res.json(result);
+    } else {
+      res.send(404);
+    }
+  });
+
 
 //used to instantiate the server
 app.listen(PORT, () => {
