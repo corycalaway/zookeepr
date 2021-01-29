@@ -5,6 +5,8 @@ const { animals } = require('./data/animals');
 // used to add express to project.
 const express = require('express');
 
+const PORT = process.env.PORT || 3001;
+
 //used to instantiate the server
 const app = express();
 
@@ -78,6 +80,6 @@ app.get('/api/animals', (req, res) => {
   });
 
 //used to instantiate the server
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
-  });
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
+});
