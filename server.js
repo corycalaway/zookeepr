@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 3001;
 //used to instantiate the server
 const app = express();
 
+//routes to public folder
+app.use(express.static('public'));
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -177,6 +179,29 @@ app.get('/api/animals', (req, res) => {
 
 //   res.json(req.body);
 // });
+
+
+// route to index 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+
+
+// route to animals
+app.get('/animals', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+//route to zookeepers
+app.get('/zookeepers', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 //used to instantiate the server
 app.listen(PORT, () => {

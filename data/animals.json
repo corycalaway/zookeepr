@@ -137,6 +137,16 @@
         "hungry"
       ],
       "id": "13"
+    },
+    {
+      "name": "Cory",
+      "species": "Evil Shrew",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "zany",
+        "anxious"
+      ],
+      "id": "14"
     }
   ]
 }
